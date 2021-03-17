@@ -22,7 +22,7 @@ function getCss(theme: string, fontSize: string) {
         radial = 'dimgray';
     }
     return `
-    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+    @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
 
     @font-face {
         font-family: 'Inter';
