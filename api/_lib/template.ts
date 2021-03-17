@@ -22,6 +22,8 @@ function getCss(theme: string, fontSize: string) {
         radial = 'dimgray';
     }
     return `
+    @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
     @font-face {
         font-family: 'Inter';
         font-style:  normal;
@@ -41,7 +43,7 @@ function getCss(theme: string, fontSize: string) {
         font-style: normal;
         font-weight: normal;
         src: url(data:font/woff2;charset=utf-8;base64,${mono})  format("woff2");
-      }
+    }
 
     body {
         background: ${background};
@@ -100,6 +102,7 @@ function getCss(theme: string, fontSize: string) {
         font-style: normal;
         color: ${foreground};
         line-height: 1.8;
+        font-size: 120px;
     }`;
 }
 
