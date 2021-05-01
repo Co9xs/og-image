@@ -45,7 +45,7 @@ function getCss() {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 100px 80px;
+        padding: 100px;
         background: #C9CCD3;
         background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%);
         background-blend-mode: lighten;
