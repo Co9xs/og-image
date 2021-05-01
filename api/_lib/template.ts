@@ -11,18 +11,9 @@ const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString
 const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
 const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
 
-function getCss(theme: string, fontSize: string) {
-    let background = 'white';
-    let foreground = 'black';
-    let radial = 'lightgray';
-
-    if (theme === 'dark') {
-        background = 'black';
-        foreground = 'white';
-        radial = 'dimgray';
-    }
+function getCss() {
     return `
-    @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
 
     @font-face {
         font-family: 'Inter';
@@ -46,83 +37,66 @@ function getCss(theme: string, fontSize: string) {
     }
 
     body {
-        background: ${background};
-        background-image: radial-gradient(circle at 25px 25px, ${radial} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${radial} 2%, transparent 0%);
-        background-size: 100px 100px;
+        box-sizing: border-box;
         height: 100vh;
+        width: 100%;
+        margin: 0;
+        background: #FFF;
         display: flex;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 100px 80px;
+        background: #C9CCD3;
+        background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%);
+        background-blend-mode: lighten;
     }
 
-    code {
-        color: #D400FF;
-        font-family: 'Vera';
-        white-space: pre-wrap;
-        letter-spacing: -5px;
+    .main {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border-radius: 30px;
+        padding: 50px;
+        box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+        background: #FFF;
+        position: relative;
     }
 
-    code:before, code:after {
-        content: '\`';
-    }
-
-    .logo-wrapper {
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        justify-items: center;
-    }
-
-    .logo {
-        margin: 0 75px;
-    }
-
-    .plus {
-        color: #BBB;
-        font-family: Times New Roman, Verdana;
-        font-size: 100px;
-    }
-
-    .spacer {
-        margin: 150px;
-    }
-
-    .emoji {
-        height: 1em;
-        width: 1em;
-        margin: 0 .05em 0 .1em;
-        vertical-align: -0.1em;
-    }
-    
-    .heading {
-        font-family: 'M PLUS 1p', 'Inter', sans-serif;
-        font-size: ${sanitizeHtml(fontSize)};
+    .title {
+        font-family: 'Noto Sans JP', 'Inter', sans-serif;
         font-style: normal;
-        color: ${foreground};
-        line-height: 1.8;
-        font-size: 120px;
+        font-size: 96px;
+        line-height: 1.5;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        -webkit- transform: translateY(-50%) translateX(-50%);
+        width: 80%;
     }`;
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { text, theme, md, fontSize } = parsedReq;
-    return `<!DOCTYPE html>
-<html>
+    const { text, md } = parsedReq;
+    return `
+    <!DOCTYPE html>
+    <html>
     <meta charset="utf-8">
     <title>Generated Image</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        ${getCss(theme, fontSize)}
+        ${getCss()}
     </style>
     <body>
-        <div>
-            <div class="heading">${emojify(
+        <div class="main">
+            <div class="title">${emojify(
                 md ? marked(text) : sanitizeHtml(text)
             )}
             </div>
+            <div></div>
         </div>
     </body>
-</html>`;
+    </html>
+`;
 }
