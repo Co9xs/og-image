@@ -45,7 +45,7 @@ function getCss() {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 100px;
+        padding: 50px;
         background: #C9CCD3;
         background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%);
         background-blend-mode: lighten;
@@ -55,7 +55,7 @@ function getCss() {
         width: 100%;
         height: 100%;
         box-sizing: border-box;
-        border-radius: 30px;
+        border-radius: 10px;
         padding: 50px;
         box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
         background: #FFF;
@@ -65,7 +65,7 @@ function getCss() {
     .title {
         font-family: 'Noto Sans JP', 'Inter', sans-serif;
         font-style: normal;
-        font-size: 96px;
+        font-size: 48px;
         line-height: 1.5;
         text-align: center;
         position: absolute;
