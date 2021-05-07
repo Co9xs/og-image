@@ -17,9 +17,10 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
         }
         const { fileType } = parsedReq;
         const file = await getScreenshot(html, fileType, isDev);
+        const cacheAge = 7 * 24 * 60; // 1週間
         res.statusCode = 200;
         res.setHeader('Content-Type', `image/${fileType}`);
-        res.setHeader('Cache-Control', `private`);
+        res.setHeader('Cache-Control', `public, max-age=${cacheAge}`);
         res.end(file);
     } catch (e) {
         res.statusCode = 500;
